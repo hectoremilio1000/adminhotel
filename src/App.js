@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { Form, Layout, Menu } from "antd";
+import imagen from "./assets/images/WhatsApp Image 2022-12-14 at 08.00.04.jpeg";
+
+import Formulario from './components/Formulario/Formulario';
+
+
+const { Header, Footer, Sider, Content } = Layout;
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         Inicio
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Header>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <img alt="Quikyempresa" src={imagen} width="140px" height="50px" />
+        </div>
+      </Header>
+      <Content>
+        <Formulario/>
+      </Content>
+      <Footer style={{background:'white'}}>Quiky empresa Copyright</Footer>
+    </Layout>
   );
 }
 
