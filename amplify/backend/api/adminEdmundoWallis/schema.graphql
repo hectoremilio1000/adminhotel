@@ -1,0 +1,32 @@
+type OrdenPrueba @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  cantidad: Int
+  ordenesID: ID! @index(name: "byOrdenes")
+  Pruebas: Pruebas @hasOne
+}
+
+type Pruebas @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  nombre: String
+  precio: Float
+}
+
+type Doctor @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  nombre: String
+}
+
+type Ordenes @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  nombre: String
+  usuarioID: ID! @index(name: "byUsuario")
+  Doctor: Doctor @hasOne
+  OrdenPruebas: [OrdenPrueba] @hasMany(indexName: "byOrdenes", fields: ["id"])
+}
+
+type Usuario @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  nombre: String
+  Ordenes: [Ordenes] @hasMany(indexName: "byUsuario", fields: ["id"])
+}
+ 
